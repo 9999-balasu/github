@@ -1,5 +1,10 @@
-import { useEffect, useState } from "react";
+
+
+
+
+
 import { useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
 import axios from "axios";
 
 const UserProfile = () => {
@@ -7,21 +12,18 @@ const UserProfile = () => {
   const [user, setUser] = useState(null);
 
   useEffect(() => {
-    axios.get(`https://api.github.com/users/${username}`)
-      .then((res) => setUser(res.data))
-      .catch(() => alert("User not found"));
+    axios.get(`https://api.github.com/users/${username}`).then((res) => setUser(res.data));
   }, [username]);
 
-  return user ? (
-    <div>
-      <h2>{user.login}</h2>
-      <img src={user.avatar_url} alt="Avatar" width={100} />
-      <p>Followers: {user.followers}</p>
-      <p>Following: {user.following}</p>
-      <p>Repos: {user.public_repos}</p>
+  if (!user) return <p>Loading...</p>;
+
+  return (
+    <div className="p-4">
+      <img src={user.avatar_url} alt={user.login} className="w-32 h-32 rounded-full" />
+      <h2 className="text-2xl font-bold">{user.login}</h2>
+      <p>{user.bio}</p>
+      <a href={user.html_url} target="_blank" className="text-blue-500">GitHub Profile</a>
     </div>
-  ) : (
-    <p>Loading...</p>
   );
 };
 

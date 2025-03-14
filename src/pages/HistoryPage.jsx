@@ -1,30 +1,28 @@
 
 
 
-import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
 
-const HistoryPage = () => {
+
+import { useState, useEffect } from "react";
+import { getSearchHistory, clearSearch } from "../utils/localStorage";
+
+const History = () => {
   const [history, setHistory] = useState([]);
 
   useEffect(() => {
-    const savedHistory = JSON.parse(localStorage.getItem("searchHistory")) || [];
-    setHistory(savedHistory);
+    setHistory(getSearchHistory());
   }, []);
 
-  const clearHistory = () => {
-    localStorage.removeItem("searchHistory");
-    setHistory([]);
-  };
-
   return (
-    <div className="container">
-      <h2>Search History</h2>
-      <button className="clear-history" onClick={clearHistory}>Clear History</button>
-      <ul className="history-list">
-        {history.map((entry, index) => (
-          <li key={index}>
-            <Link to={`/user/${entry.username}`}>{entry.username}</Link> - {entry.success ? "✅" : "❌"}
+    <div className="p-4">
+      <h2 className="text-xl">Search History</h2>
+      <ul>
+        {history.map((item, index) => (
+          <li key={index} className="border p-2 my-2">
+            {item.username} - {item.success ? "✅" : "❌"}
+            <button onClick={() => { clearSearch(item.username); setHistory(getSearchHistory()); }} className="ml-2 text-red-500">
+              Clear
+            </button>
           </li>
         ))}
       </ul>
@@ -32,4 +30,4 @@ const HistoryPage = () => {
   );
 };
 
-export default HistoryPage;
+export default History;
