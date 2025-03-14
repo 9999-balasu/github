@@ -1,0 +1,130 @@
+/* Reset default margin & padding */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  /* Make body take full viewport and center content */
+  body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Full height of viewport */
+    background-color: #0d1117;
+    font-family: Arial, sans-serif;
+    color: #c9d1d9;
+    text-align: center;
+  }
+  
+  /* Center the main app container */
+  .app-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #161b22;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(255, 255, 255, 0.1);
+    width: 100%;
+    max-width: 500px;
+  }
+  
+  /* Center navigation */
+
+/* Navigation Styling */
+nav {
+    width: 100%;
+    display: flex;
+    justify-content: center; /* Centers nav links */
+    background-color: #161b22;
+    padding: 10px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    gap: 20px; /* Adds spacing between links */
+  }
+  
+  nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 8px 15px;
+    border-radius: 5px;
+    transition: background 0.3s;
+  }
+  
+  nav a:hover {
+    background: #238636;
+  }
+  
+  
+  
+ 
+  /* Center the search box */
+  .search-box {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+    max-width: 350px;
+  }
+  
+  .search-box input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #30363d;
+    background-color: #0d1117;
+    color: white;
+    border-radius: 5px;
+    text-align: center;
+  }
+  
+  .search-box button {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    background-color: #238636;
+    color: white;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .search-box button:hover {
+    background-color: #2ea043;
+  }
+  
+  /* Center user profile card */
+  .user-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #21262d;
+    padding: 15px;
+    border-radius: 10px;
+    margin-top: 15px;
+    width: 100%;
+    max-width: 350px;
+  }
+  
+  .user-card img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+  }
+  
+  /* Responsive Fix */
+  @media (max-width: 768px) {
+    .app-container {
+      width: 90%;
+    }
+    .search-box {
+      width: 100%;
+    }
+    .user-card {
+      width: 100%;
+    }
+  }
+  
